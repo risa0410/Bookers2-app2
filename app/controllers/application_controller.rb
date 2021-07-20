@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
   
+  def show
+    @User = User.find(params[:id])
+  end
+  
 end
