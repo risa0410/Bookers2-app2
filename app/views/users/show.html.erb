@@ -6,7 +6,9 @@
     <h2>User info</h2>
       
     <table class='table'>
-      <tr><img class="attachment user profile_image fallback" src="/assets/no_image.jpg" /></tr>
+      <tr>
+      <%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+      </tr>
       <tr>
 	    <th>name</th>
 	    <th><%= @user.name %></th>
@@ -14,7 +16,7 @@
       
       <tr>
 	    <th>introduction</th>
-	    <th></th>
+	    <th><%= @user.introduction %></th>
       </tr>
     </table>
 　
