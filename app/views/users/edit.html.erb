@@ -6,28 +6,30 @@
   <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
     
     <h2>User info</h2>
-    <form enctype="multipart/form-data" action="/users/6210" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="a/e0DM/Nw3z97CxYqQCsL+tVYIEnJw9LImIF8Ioj9yuAiveqzkOqcxnLUx62qr1roux7tmwfGkIgoHtqf4hLmQ==" />
+    <%= form_with model:@user, local:true do |f| %>
       
     <div class="form-group">
       <label for="user_name">Name</label>
-      <input class="form-control name" type="text" value="金山" name="user[name]" id="user_name" />
+      <%= f.text_field :name, autofocus: true %>
     </div>
     
     <div class="form-group">
       <label for="user_image">Image</label>
-      <input value="{}" data-reference="cabd402c235014c72035e026d6f6371e" type="hidden" name="user[profile_image]" /><input class="form-control-file user_image" data-reference="cabd402c235014c72035e026d6f6371e" include_hidden="false" type="file" name="user[profile_image]" id="user_profile_image" />
+      <%= attachment_image_tag @user, :image, :fill, 100, 100, fallback: "no_image.jpg"%>
+      <%= f.attachment_field :image %>
     </div>
     
     <div class="form-group">
       <label for="user_introduction">Introduction</label>
-      <textarea class="form-control introduction" name="user[introduction]" id="user_introduction">
-      </textarea>
+      <%= f.text_area :introduction, autofocus: true %>
     </div>
       
     <div class="form-group">
-      <input type="submit" name="commit" value="Update User" class="btn btn-secondary" data-disable-with="Update User" />
+      <%= f.submit "Update User", class:"btn btn-secondary" %>
     </div>
-    
+  
+    <% end %>
+  
     </form>
   </div>
   </div>
