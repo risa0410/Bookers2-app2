@@ -26,12 +26,10 @@ class BooksController < ApplicationController
   end
 
   def edit
-   if params[:id] == current_user.id
     @book = Book.find(params[:id])
-    render action: :edit
-   else
-    @user = current_user
-    render action: :show
+    @user = @book.user
+   if @book.user != current_user
+    redirect_to book_path(@book)
    end
   end
 
