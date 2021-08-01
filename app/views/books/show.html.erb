@@ -47,6 +47,18 @@
        <td><%= link_to @book.title, book_path(@book) %></td>
        <td><%= @book.body %></td>
        <td>
+        <% if current_user.already_favorited?(@book) %>
+         <%= link_to book_favorites_path(@book), method: :delete do %>
+          <i class="fas fa-heart", style="color: red"></i>
+         <% end %>
+        <% else %>
+         <%= link_to book_favorites_path(@book), method: :create do %>
+          <i class="fas fa-heart", style="color: blue"></i>
+         <% end %>
+        <% end %>
+        <%= @book.favorites.count %>
+       </td>
+       <td>
         <% if @book.user == current_user %>
          <%= link_to "Edit", edit_book_path(@book), class:"btn btn-sm btn-success" %>
         <% end %>
