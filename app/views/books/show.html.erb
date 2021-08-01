@@ -59,6 +59,25 @@
         <%= @book.favorites.count %>
        </td>
        <td>
+        <div class="comments">
+         <% @book.book_comments.each do |book| %>
+          <%= attachment_image_tag book_comment.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size:'40x40' %></br>
+          <%= link_to book_comment.user.name, user_path(book_comment.user) %>
+          <%= book_comment.comment %>
+         <% end %>
+        </div>
+        <div class="new-comment">
+         <%= form_with(model:[@book, @book_comment], local: true) do |f| %>
+          <div class="form-group">
+           <%= f.text_area :comment, class:"form-control book_comment" %>
+          </div>
+          <div class="form-group">
+           <%= f.submit "送信" %>
+          </div>
+         <% end %>
+        </div>
+       </td>
+       <td>
         <% if @book.user == current_user %>
          <%= link_to "Edit", edit_book_path(@book), class:"btn btn-sm btn-success" %>
         <% end %>
