@@ -59,6 +59,9 @@
          <% end %>
         <% end %>
         <%= @book.favorites.count %>
+        <td>
+        コメント件数：<%= @book.book_comments.count %>
+        </td>
        </td>
       </tr>
      </table>
@@ -71,6 +74,13 @@
             <td><%= attachment_image_tag book_comment.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size:'40x40' %></td>
             <td><%= link_to book_comment.user.name, user_path(book_comment.user) %></td>
             <td><%= book_comment.comment %></td>
+            <td>
+             <% if book_comment.user == current_user %>
+              <div class="comment-delete">
+               <%= link_to "Destroy", book_book_comment_path(book_comment.book, book_comment), class:"btn btn-sm btn-danger", method: :delete %>
+              </div>
+             <% end %>
+            </td>
            </tr>
           <% end %>
         </div>
