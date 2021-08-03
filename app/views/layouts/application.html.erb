@@ -37,8 +37,13 @@
     </nav>
    </header>
    
- 　  <div class="row">
- 　   <div class="col-xs-6 col-xs-offset-3 text-center" style="margin-top: 25px;">
+     <% if flash[:notice] %>
+       <div class="flash" style="color: #008000;">
+        <%= flash[:notice] %>
+       </div>
+     <% end %>
+     
+     <div class="col-xs-6 col-xs-offset-3 text-center" style="margin-top: 25px;">
     　<% if user_signed_in? %>
      　<%= form_with url:search_path, method: :get, local: true do |f| %>
       　<%= f.text_field 'search[value]' %>
@@ -48,14 +53,6 @@
      　<% end %>
     　<% end %>
  　　　</div>
-　　</div>
-
-      
-     <% if flash[:notice] %>
-       <div class="flash" style="color: #008000;">
-        <%= flash[:notice] %>
-       </div>
-     <% end %>
       
     <%= yield %>
       
