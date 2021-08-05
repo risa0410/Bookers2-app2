@@ -1,5 +1,6 @@
 <div class="container">
   <div class="col-xs-12">
+    
     <% if @model == "user" %>
      <h2>Users search for '<%= @value %>'</h2>
       <table class="table">
@@ -25,6 +26,7 @@
          </tr>
         </tbody>
        <% end %>
+       
     <% elsif @model == "book" %>
      <h2>Books search for '<%= @value %>'</h2>
       <table class="table">
@@ -51,6 +53,7 @@
         </tbody>
        <% end %>
     <% end %>
+    
       </table>
   </div>
 </div>

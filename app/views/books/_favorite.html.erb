@@ -1,0 +1,12 @@
+<td>
+ <% if current_user.already_favorited?(book) %>
+  <%= link_to book_favorites_path(book), method: :delete do %>
+   <i class="fas fa-heart", style="color: red"></i>
+  <% end %>
+ <% else %>
+  <%= link_to book_favorites_path(book), method: :post do %>
+   <i class="fas fa-heart", style="color: blue"></i>
+  <% end %>
+ <% end %>
+ <%= book.favorites.count %>
+</td>
