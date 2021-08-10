@@ -2,7 +2,7 @@ class BooksController < ApplicationController
 
   def index
    @user = current_user
-   @books = Book.all
+   @books = Book
    @book = Book.new
   end
 
